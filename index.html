@@ -49,25 +49,56 @@
         <div drawer>
             <core-menu selected="1">
                 <core-item icon="visibility" label="Status"></core-item>
-                <core-item icon="add-circle" label="Add Bucket"></core-item>
+                <core-item icon="add-circle" label="Create Bucket"></core-item>
             </core-menu>
         </div>
         <div main>
             <header>
                 <h1>
-                    Add Bucket
+                    Create Bucket and Generate Access Key
                 </h1>
 
-                <p>
-                    Instructions to create a bucket go here. Add requirements and restrictions.
-                </p>
+		<polymer-element name="paper-submit" extends="button" noscript>
+		  <template>
+		    <core-style ref="controls"></core-style>
+		    <style>
+		      :host {
+		      background: transparent;
+		      border: 0;
+		      padding: 0;
+		      font-size: inherit;
+		      }
+		      paper-button {
+		      text-transform: none;
+		      }
+		    </style>
+		    <paper-button raised><content></content></paper-button>
+		  </template>
+		</polymer-element>
 
-                <div>
-                    <paper-input label="Bucket Name"></paper-input>
-                </div>
-                <div>
-                    <paper-button raised>Add Bucket</paper-button>
-                </div>
+                <p>
+                    Instructions to create a bucket and generate access key go here. Add requirements and restrictions.
+                </p>
+		<div id="content">
+		  <form action="/bucket" method="post">
+		    <div>
+		      <paper-input-decorator label="Bucket Name" style="width:14em" error="A name should be provided!" class="invalid">
+			<input type="text" name="bucketname" is="core-input" maxlength="25" required>
+		      </paper-input-decorator>
+                      <!--<paper-input label="Bucket Name" style="width:14em"></paper-input>-->
+                    </div>
+		    <button type="submit" is="paper-submit">Create Bucket</button>
+		    <!--<paper-button raised>Create Bucket</paper-button>-->
+		  </form>
+		  <form action="/access" method="post">
+		    <div>
+		      <paper-input-decorator label="Your Name" style="width:14em" error="A name should be provided!" class="invalid">
+			<input type="text" name="username" is="core-input" maxlength="25" required>
+		      </paper-input-decorator>
+		    </div>
+		    <button type="submit" is="paper-submit">Generate Access Key</button>
+		  </form>
+		</div>
             </header>
         </div>
     </core-drawer-panel>
