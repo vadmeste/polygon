@@ -21,6 +21,7 @@
     <link rel="import" href="bower_components/font-roboto/roboto.html">
     <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
     <link rel="import" href="add-bucket.html">
+    <link rel="import" href="access-key.html">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
@@ -42,6 +43,7 @@
                 <core-menu selected="1">
                     <core-item icon="visibility" label="Home" onclick="document.transition(0)"></core-item>
                     <core-item icon="add-circle" label="Add Bucket" onclick="document.transition(1)"></core-item>
+		    <core-item icon="account-circle" label="Generate Access Key" onclick="document.transition(2)"></core-item>
                 </core-menu>
             </paper-dropdown>
         </paper-menu-button>
@@ -63,6 +65,9 @@
                     <section>
                         <add-bucket/>
                     </section>
+		    <section>
+		        <access-key/>
+                    <section>
                 </core-animated-pages>
             </div>
         </div>
