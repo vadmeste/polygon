@@ -19,12 +19,19 @@
     <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html"/>
     <link rel="import" href="bower_components/paper-button/paper-button.html"/>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="bower_components/core-animated-pages/core-animated-pages.html">
     <link rel="import" href="add-bucket.html">
     <style>
         body {
             font-family: 'Roboto', sans-serif;
         }
     </style>
+    <script>
+        document.transition = function (index) {
+            var pages = document.querySelector('core-animated-pages');
+            pages.selected = index;
+        }
+    </script>
 </head>
 <body fullbleed vertical layout unresolved>
 <core-header-panel mode="standard" flex>
@@ -33,8 +40,8 @@
             <paper-icon-button icon="menu" noink></paper-icon-button>
             <paper-dropdown class="dropdown">
                 <core-menu selected="1">
-                    <core-item icon="visibility" label="Status"></core-item>
-                    <core-item icon="add-circle" label="Create Bucket"></core-item>
+                    <core-item icon="visibility" label="Home" onclick="document.transition(0)"></core-item>
+                    <core-item icon="add-circle" label="Add Bucket" onclick="document.transition(1)"></core-item>
                 </core-menu>
             </paper-dropdown>
         </paper-menu-button>
@@ -48,8 +55,15 @@
         </div>
         <div main style="overflow: initial;">
 
-            <div>
-                <add-bucket/>
+            <div class="content">
+                <core-animated-pages selected="0">
+                    <section>
+                        <h1>Home</h1>
+                    </section>
+                    <section>
+                        <add-bucket/>
+                    </section>
+                </core-animated-pages>
             </div>
         </div>
     </core-drawer-panel>
