@@ -30,27 +30,21 @@
 <body fullbleed vertical layout unresolved>
 <core-header-panel mode="standard" flex>
     <core-toolbar id="mainheader">
-        <paper-menu-button>
-            <paper-icon-button icon="social:notifications" noink></paper-icon-button>
+        <span>Minio Object Storage</span>
+        <paper-menu-button flex>
+            <paper-icon-button icon="menu" noink></paper-icon-button>
             <paper-dropdown class="dropdown">
-                <core-menu class="menu">
-                    <paper-item>Minio 1.2 is now available!</paper-item>
-                    <paper-item center-justified flex>
-                        <paper-button raised flex>Update Minio</paper-button>
-                    </paper-item>
+                <core-menu selected="1">
+                    <core-item icon="visibility" label="Status"></core-item>
+                    <core-item icon="add-circle" label="Create Bucket"></core-item>
                 </core-menu>
             </paper-dropdown>
         </paper-menu-button>
-        <span flex>Minio Object Storage</span>
         <paper-input label="Search"></paper-input>
         <paper-icon-button id="searchbutton" icon="search"></paper-icon-button>
     </core-toolbar>
     <core-drawer-panel>
         <div drawer>
-            <core-menu selected="1">
-                <core-item icon="visibility" label="Status"></core-item>
-                <core-item icon="add-circle" label="Create Bucket"></core-item>
-            </core-menu>
         </div>
         <div main style="overflow: initial;">
             <header>
