@@ -19,34 +19,12 @@
     <link rel="import" href="bower_components/paper-menu-button/paper-menu-button.html"/>
     <link rel="import" href="bower_components/paper-button/paper-button.html"/>
     <link rel="import" href="bower_components/font-roboto/roboto.html">
+    <link rel="import" href="add-bucket.html">
     <style>
         body {
-            height: 100%;
-            margin: 0;
             font-family: 'Roboto', sans-serif;
         }
     </style>
-    <polymer-element name="minio-test">
-        <template>
-            <div>
-                Name: '{{name}}'
-            </div>
-            <div>
-                <paper-input label="Bucket Name" id="nameInput"></paper-input>
-            </div>
-            <div>
-                <paper-button raised on-click="{{addBucket}}">Add Bucket</paper-button>
-            </div>
-        </template>
-        <script>
-            Polymer({
-                name: "No Name Set",
-                addBucket: function() {
-                    this.name = this.$.nameInput.value;
-                }
-            });
-        </script>
-    </polymer-element>
 </head>
 <body fullbleed vertical layout unresolved>
 <core-header-panel mode="standard" flex>
@@ -69,32 +47,10 @@
             <!-- empty by design -->
         </div>
         <div main style="overflow: initial;">
-            <header>
-                <h1>
-                    Create Bucket and Generate Access Key
-                </h1>
 
-                <p>
-                    Instructions to create a bucket and generate access key go here. Add requirements and restrictions.
-                </p>
-
-                <div>
-                    <minio-test></minio-test>
-                    <div>
-                        <paper-input-decorator label="Add Bucket" >
-                            <input is="core-input" />
-                        </paper-input-decorator>
-                    </div>
-                    <div>
-                        <paper-input-decorator label="Your Name" >
-                            <input is="core-input" />
-                        </paper-input-decorator>
-                    </div>
-                    <div>
-                        <paper-button raised>Generate Access Key</paper-button>
-                    </div>
-                </div>
-            </header>
+            <div>
+                <add-bucket/>
+            </div>
         </div>
     </core-drawer-panel>
 </core-header-panel>

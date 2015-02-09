@@ -1,0 +1,30 @@
+<polymer-element name="add-bucket">
+    <template>
+        <h1>
+            Add Bucket
+        </h1>
+
+        <p>
+            Instructions to create a bucket and generate access key go here. Add requirements and restrictions.
+        </p>
+
+        <div>
+            Bucket Name: {{name}}
+        </div>
+
+        <div>
+            <paper-input label="Bucket Name" id="nameInput"></paper-input>
+        </div>
+        <div>
+            <paper-button raised on-click="{{addBucket}}">Add Bucket</paper-button>
+        </div>
+    </template>
+    <script>
+        Polymer({
+            name: "",
+            addBucket: function () {
+                this.name = this.$.nameInput.value;
+            }
+        });
+    </script>
+</polymer-element>
