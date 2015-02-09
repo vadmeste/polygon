@@ -52,53 +52,26 @@
                 <core-item icon="add-circle" label="Create Bucket"></core-item>
             </core-menu>
         </div>
-        <div main>
+        <div main style="overflow: initial;">
             <header>
                 <h1>
                     Create Bucket and Generate Access Key
                 </h1>
-
-		<polymer-element name="paper-submit" extends="button" noscript>
-		  <template>
-		    <core-style ref="controls"></core-style>
-		    <style>
-		      :host {
-		      background: transparent;
-		      border: 0;
-		      padding: 0;
-		      font-size: inherit;
-		      }
-		      paper-button {
-		      text-transform: none;
-		      }
-		    </style>
-		    <paper-button raised><content></content></paper-button>
-		  </template>
-		</polymer-element>
-
                 <p>
                     Instructions to create a bucket and generate access key go here. Add requirements and restrictions.
                 </p>
-		<div id="content">
-		  <form action="/bucket" method="post">
-		    <div>
-		      <paper-input-decorator label="Bucket Name" style="width:14em" error="A name should be provided!" class="invalid">
-			<input type="text" name="bucketname" is="core-input" maxlength="25" required>
-		      </paper-input-decorator>
-                      <!--<paper-input label="Bucket Name" style="width:14em"></paper-input>-->
+
+                <div>
+                    <div>
+                        <paper-input label="Search"></paper-input><br/><paper-button raised>Create Bucket</paper-button>
                     </div>
-		    <button type="submit" is="paper-submit">Create Bucket</button>
-		    <!--<paper-button raised>Create Bucket</paper-button>-->
-		  </form>
-		  <form action="/access" method="post">
-		    <div>
-		      <paper-input-decorator label="Your Name" style="width:14em" error="A name should be provided!" class="invalid">
-			<input type="text" name="username" is="core-input" maxlength="25" required>
-		      </paper-input-decorator>
-		    </div>
-		    <button type="submit" is="paper-submit">Generate Access Key</button>
-		  </form>
-		</div>
+                    <div>
+                        <paper-input label="Your Name"/>
+                    </div>
+                    <div>
+                        <paper-button raised>Generate Access Key</paper-button>
+                    </div>
+                </div>
             </header>
         </div>
     </core-drawer-panel>
