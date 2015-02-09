@@ -5,12 +5,13 @@
         </h1>
 
         <p>
-            Instructions to create a bucket and generate access key go here. Add requirements and restrictions.
+            Instructions to create a bucket. Add requirements and restrictions.
         </p>
 
         <div>
-            Bucket Name: {{name}}
+            Bucket Name: {{bucketname}}
         </div>
+
 
         <div>
             <paper-input label="Bucket Name" id="nameInput"></paper-input>
@@ -18,12 +19,16 @@
         <div>
             <paper-button raised on-click="{{addBucket}}">Add Bucket</paper-button>
         </div>
+
     </template>
     <script>
-        Polymer({
-            name: "",
+        Polymer('add-bucket', {
+            publish: {
+               bucketname: "",
+            },
+
             addBucket: function () {
-                this.name = this.$.nameInput.value;
+                this.bucketname = this.$.nameInput.value;
             }
         });
     </script>
