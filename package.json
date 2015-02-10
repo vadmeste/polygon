@@ -1,0 +1,23 @@
+{
+  "name": "polygon",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/minio-io/polygon"
+  },
+  "author": "Frederick F. Kautz IV <fkautz@minio.io>",
+  "license": "ALv2",
+  "bugs": {
+    "url": "https://github.com/minio-io/polygon/issues"
+  },
+  "homepage": "https://github.com/minio-io/polygon",
+  "dependencies": {
+    "material-ui": "^0.6.1",
+    "react": "^0.12.2"
+  }
+}
