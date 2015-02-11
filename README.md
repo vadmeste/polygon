@@ -19,7 +19,7 @@ $ grunt
 
 [Build instructions](https://github.com/Minio-io/minio/blob/master/CONTRIBUTING.md)
 
-## Starting
+## Start ``minio`` service
 
 ```
 $ minio
