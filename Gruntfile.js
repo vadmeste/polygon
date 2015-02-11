@@ -4,16 +4,15 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         browserify: {
             dist: {
-                src: ['app.jsx'],
-                dest: 'build/bundle.js',
+                src: ['js/**/*.jsx', 'js/**/*.js'],
+                dest: 'bundle.js',
                 options: {
-                    transform: ['reactify']
+                    transform: ['reactify'],
                 }
             }
         }
     });
 
     grunt.loadNpmTasks('grunt-browserify');
-
     grunt.registerTask('default', ['browserify'])
 }
