@@ -18,10 +18,13 @@
   "homepage": "https://github.com/minio-io/polygon",
   "dependencies": {
     "material-ui": "^0.6.1",
-    "react": "^0.12.2"
+    "react": "^0.12.2",
+    "react-tap-event-plugin": "^0.1.4"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
-    "grunt-browserify": "^3.3.0"
+    "grunt-browserify": "^3.3.0",
+    "grunt-contrib-less": "^1.0.0",
+    "grunt-contrib-watch": "^0.6.1"
   }
 }
