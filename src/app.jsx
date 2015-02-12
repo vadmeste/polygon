@@ -19,7 +19,7 @@ var AddBucket = React.createClass({
     },
     render: function() {
         return(
-            <Paper zDepth={1}>
+            <div>
                 <Menu menuItems={this.state.buckets} />
                 <form onSubmit={this.handleSubmit}>
                     <br />
@@ -27,7 +27,7 @@ var AddBucket = React.createClass({
                     <br />
                     <RaisedButton label="Add Bucket" />
                 </form>
-            </Paper>
+            </div>
         )
     },
     handleSubmit: function(e) {
