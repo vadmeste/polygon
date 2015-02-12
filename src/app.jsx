@@ -55,7 +55,7 @@ var MinioApp = React.createClass({
                 <AppBar className="minio-appbar" onMenuIconButtonTouchTap={this.toggleNav} >
                     <h1 className="minio-header">Minio Object Storage</h1>
                 </AppBar>
-                <LeftNav docked={false} ref="leftNav" menuItems={menuItems} />
+                <LeftNav docked={true} ref="leftNav" menuItems={menuItems} />
                 <AddBucket />
             </div>
         )
