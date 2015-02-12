@@ -4,24 +4,59 @@ var Mui = require("material-ui");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-var RaisedButton = Mui.RaisedButton;
-var Toolbar = Mui.Toolbar;
-var ToolbarGroup = Mui.ToolbarGroup;
-var Icon = Mui.Icon;
 var AppBar = Mui.AppBar;
-var Paper = Mui.Paper;
 var LeftNav = Mui.LeftNav;
+var Menu = Mui.Menu;
+var Paper = Mui.Paper;
+var RaisedButton = Mui.RaisedButton;
+var TextField = Mui.TextField;
+
+var AddBucket = React.createClass({
+    getInitialState: function() {
+        return {
+            buckets: []
+        }
+    },
+    render: function() {
+        return(
+            <Paper zDepth={1}>
+                <Menu menuItems={this.state.buckets} />
+                <form onSubmit={this.handleSubmit}>
+                    <br />
+                    <TextField hintText="Bucket Name" ref ="bucketName" />
+                    <br />
+                    <RaisedButton label="Add Bucket" />
+                </form>
+            </Paper>
+        )
+    },
+    handleSubmit: function(e) {
+        e.preventDefault();
+        var bucketName = this.refs.bucketName.getValue().trim();
+        var menuItem = {
+            payload: this.state.buckets.length + 1,
+            text: bucketName
+
+        }
+        var newState = React.addons.update(this.state, {
+            buckets: {
+                $push : [menuItem]
+            }
+        });
+        this.setState(newState);
+        this.refs.bucketName.setValue('');
+    }
+});
 
 var MinioApp = React.createClass({
     render: function() {
         return(
             <div>
-                <AppBar
-                    onMenuIconButtonTouchTap={this.toggleNav}
-                >
+                <AppBar className="minio-appbar" onMenuIconButtonTouchTap={this.toggleNav} >
                     <h1 className="minio-header">Minio Object Storage</h1>
                 </AppBar>
                 <LeftNav docked={false} ref="leftNav" menuItems={menuItems} />
+                <AddBucket />
             </div>
         )
     },

@@ -1,13 +1,22 @@
 body {
   font-family: 'Roboto', sans-serif;
-  //background-image: url(http://minio.io/img/pw_maze_black_2X.png);
+
 }
 
 // set clean colors
-div .mui-app-bar {
+.mui-app-bar {
   //background-color: black;
-  background-image: url(http://minio.io/img/pw_maze_black_2X.png);
+  //background-image: url(http://minio.io/img/pw_maze_black_2X.png);
+  background-color: white;
   color: white;
+}
+
+.mui-app-bar.mui-paper.mui-z-depth-1>.mui-z-depth-bottom {
+  box-shadow: 0px 0px 0px #FFFFFF;
+}
+
+.mui-paper.mui-z-depth-1 {
+  box-shadow: 0px 0px 0px #FFFFFF;
 }
 
 // needed to center menu button
@@ -27,11 +36,6 @@ div .mui-app-bar {
 .mui-icon {
   margin-top: 0px;
   color: #f04620;
-}
-
-.flex {
-  -webkit-flex: 1;
-  flex: 1;
 }
 
 // fix font, since we use roboto
