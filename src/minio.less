@@ -1,3 +1,7 @@
+html {
+  -webkit-font-smoothing: antialiased;
+}
+
 body {
   font-family: 'Roboto', sans-serif;
   position: relative;
@@ -5,7 +9,7 @@ body {
 
 // icon color
 .minio-menu-button {
-  margin: 5px;
+  margin: 15px;
   color: #f04620;
 }
 
@@ -19,13 +23,17 @@ body {
 }
 
 div .minio-menu-underlay {
-  background-color: rgba(0,0,0,0.5);
+  background-color: rgba(0, 0, 0, 0.54);
   position: absolute;
   top: 0px;
   left: 0px;
   width: 100%;
   height: 100%;
   z-index: 10;
+}
+
+#minio-input {
+  margin-left: 15px;
 }
 
 // fix font, since we use roboto
