@@ -16,10 +16,7 @@ var HiddenMenu = React.createClass({
                 <Menu menuItems={this.props.menuItems} />
             )
         } else {
-            return (
-                <div>
-                </div>
-            )
+            return false;
         }
     }
 })
