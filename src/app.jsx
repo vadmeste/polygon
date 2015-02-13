@@ -9,6 +9,21 @@ var Menu = Mui.Menu;
 var RaisedButton = Mui.RaisedButton;
 var TextField = Mui.TextField;
 
+var HiddenMenu = React.createClass({
+    render: function() {
+        if(this.props.menuItems.length > 0) {
+            return (
+                <Menu menuItems={this.props.menuItems} />
+            )
+        } else {
+            return (
+                <div>
+                </div>
+            )
+        }
+    }
+})
+
 var AddBucket = React.createClass({
     getInitialState: function() {
         return {
@@ -18,7 +33,7 @@ var AddBucket = React.createClass({
     render: function() {
         return(
             <div>
-                <Menu menuItems={this.state.buckets} />
+                <HiddenMenu menuItems={this.state.buckets} />
                 <form onSubmit={this.handleSubmit}>
                     <br />
                     <TextField hintText="Bucket Name" ref ="bucketName" />
@@ -26,7 +41,7 @@ var AddBucket = React.createClass({
                     <RaisedButton label="Add Bucket" />
                 </form>
             </div>
-        )
+        );
     },
     handleSubmit: function(e) {
         e.preventDefault();
@@ -50,13 +65,16 @@ var MinioMenu = React.createClass({
         if(this.props.visible) {
             return (
                 <div>
+                    <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
                     <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
                     <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
                 </div>
             )
         } else {
             return (
-                <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
+                <div>
+                    <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
+                </div>
             )
         }
     }
