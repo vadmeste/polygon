@@ -4,10 +4,8 @@ var Mui = require("material-ui");
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
-var AppBar = Mui.AppBar;
-var LeftNav = Mui.LeftNav;
+var Icon = Mui.Icon;
 var Menu = Mui.Menu;
-var Paper = Mui.Paper;
 var RaisedButton = Mui.RaisedButton;
 var TextField = Mui.TextField;
 
@@ -36,7 +34,6 @@ var AddBucket = React.createClass({
         var menuItem = {
             payload: this.state.buckets.length + 1,
             text: bucketName
-
         }
         var newState = React.addons.update(this.state, {
             buckets: {
@@ -48,20 +45,49 @@ var AddBucket = React.createClass({
     }
 });
 
+var MinioMenu = React.createClass({
+    render: function() {
+        if(this.props.visible) {
+            return (
+                <div>
+                    <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
+                    <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
+                </div>
+            )
+        } else {
+            return (
+                <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
+            )
+        }
+    }
+})
+
 var MinioApp = React.createClass({
+    getInitialState: function() {
+        return {
+            menuVisible: false,
+            menuItems: [
+                {payload: 1, text: 'Add Bucket'}
+            ]
+        };
+    },
     render: function() {
         return(
             <div>
-                <AppBar className="minio-appbar" onMenuIconButtonTouchTap={this.toggleNav} >
-                    <h1 className="minio-header">Minio Object Storage</h1>
-                </AppBar>
-                <LeftNav docked={false} ref="leftNav" menuItems={menuItems} />
+                <MinioMenu menuItems={this.state.menuItems} visible={this.state.menuVisible} closeMenuFunction={this.navCloseMenu} openMenuFunction={this.navOpenMenu}/>
                 <AddBucket />
             </div>
         )
     },
-    toggleNav: function() {
-        this.refs.leftNav.toggle();
+    navCloseMenu: function() {
+        this.setState({
+            menuVisible: false
+        })
+    },
+    navOpenMenu: function() {
+        this.setState({
+            menuVisible: true
+        })
     }
 });
 
