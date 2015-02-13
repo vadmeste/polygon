@@ -62,17 +62,12 @@ var MinioMenu = React.createClass({
         if(this.props.visible) {
             return (
                 <div>
-                    <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
                     <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
                     <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
                 </div>
             )
         } else {
-            return (
-                <div>
-                    <Icon icon="navigation-menu" className="minio-menu-button" onClick={this.props.openMenuFunction} />
-                </div>
-            )
+            return false
         }
     }
 })
@@ -89,7 +84,14 @@ var MinioApp = React.createClass({
     render: function() {
         return(
             <div>
-                <MinioMenu menuItems={this.state.menuItems} visible={this.state.menuVisible} closeMenuFunction={this.navCloseMenu} openMenuFunction={this.navOpenMenu}/>
+                <Icon 
+                    className="minio-menu-button" 
+                    icon="navigation-menu" 
+                    onClick={this.navOpenMenu} />
+                <MinioMenu 
+                    menuItems={this.state.menuItems} 
+                    visible={this.state.menuVisible} 
+                    closeMenuFunction={this.navCloseMenu} />
                 <AddBucket />
             </div>
         )
