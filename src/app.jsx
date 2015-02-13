@@ -31,7 +31,7 @@ var AddBucket = React.createClass({
         return(
             <div id="minio-input">
                 <HiddenMenu menuItems={this.state.buckets} />
-                <form onSubmit={this.handleSubmit} action="/bucket" method="POST">
+                <form onSubmit={this.handleSubmit}>
                     <br />
                     <TextField hintText="Bucket Name" ref ="bucketName" />
                     <br />
@@ -77,7 +77,7 @@ var MinioApp = React.createClass({
         return {
             menuVisible: false,
             menuItems: [
-                {payload: 1, text: 'Add Bucket'}
+                {payload: 1, text: 'Add Bucket', icon: 'content-add-circle'}
             ]
         };
     },
