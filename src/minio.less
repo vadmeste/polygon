@@ -21,6 +21,10 @@ body {
   color: #f04620;
 }
 
+.mui-text-field .mui-text-field-focus-underline {
+  border-color: #f04620;
+}
+
 .minio-menu-menu {
   position: absolute;
   top: 0px;
@@ -42,6 +46,19 @@ div .minio-menu-underlay {
 
 #minio-input {
   margin-left: 15px;
+}
+
+.minio-instant-box {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  // Covering for everyone - don't complain
+  transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
 }
 
 // fix font, since we use roboto

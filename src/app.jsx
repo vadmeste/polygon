@@ -33,7 +33,7 @@ var AddBucket = React.createClass({
                 <HiddenMenu menuItems={this.state.buckets} />
                 <form onSubmit={this.handleSubmit}>
                     <br />
-                    <TextField hintText="Bucket Name" ref ="bucketName" />
+                    <TextField hintText="Bucket Name" ref="bucketName" />
                     <br />
                     <RaisedButton label="Add Bucket" />
                 </form>
@@ -57,18 +57,51 @@ var AddBucket = React.createClass({
     }
 });
 
+var MinioSearch = React.createClass({
+    doSearch: function(e) {
+	e.preventDefault();
+	var query=this.refs.searchInput.getValue().trim();
+	this.props.doSearch(query);
+    },
+    render: function() {
+	return (
+            <TextField hintText="Search Here" ref="searchInput" value={this.props.query} onChange={this.doSearch} />
+	)
+    }
+});
+
+var MinioInstantBox = React.createClass({
+    doSearch: function(queryText) {
+        this.setState({
+            query:queryText,
+        })
+    },
+    getInitialState: function() {
+        return{
+            query:'',
+        }
+    },
+    render: function() {
+	// TODO add <Icon icon="action-search"/>
+        return (
+            <div className="minio-instant-box">
+                <MinioSearch query={this.state.query} doSearch={this.doSearch} />
+            </div>
+        );
+    }
+});
+
 var MinioMenu = React.createClass({
     render: function() {
-        if(this.props.visible) {
-            return (
-                <div>
-                    <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
-                    <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
-                </div>
-            )
-        } else {
-            return false
+        if(!this.props.visible) {
+	    return false
         }
+        return (
+            <div>
+                <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
+                <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
+            </div>
+        )
     }
 })
 
@@ -93,7 +126,8 @@ var MinioApp = React.createClass({
                     visible={this.state.menuVisible}
                     closeMenuFunction={this.navCloseMenu} />
                 <AddBucket />
-            </div>
+	        <MinioInstantBox />
+	    </div>
         )
     },
     navCloseMenu: function() {
