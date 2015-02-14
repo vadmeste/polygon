@@ -1,6 +1,8 @@
 var React = require("react");
 var Mui = require("material-ui");
 
+var MinioMenu = require('./menu.jsx')
+
 var injectTapEventPlugin = require("react-tap-event-plugin");
 injectTapEventPlugin();
 
@@ -59,14 +61,14 @@ var AddBucket = React.createClass({
 
 var MinioSearch = React.createClass({
     doSearch: function(e) {
-	e.preventDefault();
-	var query=this.refs.searchInput.getValue().trim();
-	this.props.doSearch(query);
+    	e.preventDefault();
+    	var query=this.refs.searchInput.getValue().trim();
+    	this.props.doSearch(query);
     },
     render: function() {
-	return (
-            <TextField hintText="Search Here" ref="searchInput" value={this.props.query} onChange={this.doSearch} />
-	)
+    	return (
+                <TextField hintText="Search Here" ref="searchInput" value={this.props.query} onChange={this.doSearch} />
+    	)
     }
 });
 
@@ -84,26 +86,12 @@ var MinioInstantBox = React.createClass({
     render: function() {
 	// TODO add <Icon icon="action-search"/>
         return (
-            <div className="minio-instant-box">
+            <span>
                 <MinioSearch query={this.state.query} doSearch={this.doSearch} />
-            </div>
+            </span>
         );
     }
 });
-
-var MinioMenu = React.createClass({
-    render: function() {
-        if(!this.props.visible) {
-	    return false
-        }
-        return (
-            <div>
-                <Menu className="minio-menu-menu" menuItems={this.props.menuItems} />
-                <div className="minio-menu-underlay" ref="minioMenuUnderlay" onClick={this.props.closeMenuFunction} />
-            </div>
-        )
-    }
-})
 
 var MinioApp = React.createClass({
     getInitialState: function() {
@@ -121,12 +109,13 @@ var MinioApp = React.createClass({
                     className="minio-menu-button"
                     icon="navigation-menu"
                     onClick={this.navOpenMenu} />
+                <span />
+                <MinioInstantBox />
                 <MinioMenu
                     menuItems={this.state.menuItems}
                     visible={this.state.menuVisible}
                     closeMenuFunction={this.navCloseMenu} />
                 <AddBucket />
-	        <MinioInstantBox />
 	    </div>
         )
     },
