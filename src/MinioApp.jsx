@@ -15,7 +15,8 @@ var MinioApp = React.createClass({
 	render: function() {
 		return (
 			<div>
-				<MinioSearchBar ref="minioSearchBar" onChange={this.doSearchHelp} onClick={this.doSearch} />
+				<MinioSearchBar ref="minioSearchBar" hintText="Search..."
+					onChange={this.doSearchHelp} onClick={this.doSearch} />
 				<MinioSearchHelp visible={this.state.helpVisible} input={this.state.searchInput} />
 				<MinioSearchResults input={this.state.searchResultInput} />
 			</div>
@@ -31,6 +32,7 @@ var MinioApp = React.createClass({
 	doSearch: function(e) {
 		e.preventDefault();
 		var result = this.refs.minioSearchBar.refs.searchInput.getValue().trim()
+		console.log(result)
 		var newState = {
 			helpVisible: false,
 			searchInput: '',

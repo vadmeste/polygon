@@ -1,6 +1,9 @@
 var React = require('react');
 
 var MinioSearchResults = React.createClass({
+	propTypes: {
+		input: React.PropTypes.string,
+	},
 
 	render: function() {
 		return (

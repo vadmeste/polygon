@@ -1,9 +1,13 @@
 var React = require('react');
 
 var MinioSearchHelp = React.createClass({
+	propTypes: {
+		input: React.PropTypes.string,
+		visible: React.PropTypes.bool,
+	},
 
 	render: function() {
-		if(this.props.visible) {
+		if (this.props.visible) {
 			var inputLength = this.props.input.length;
 			return (
 				<div>
