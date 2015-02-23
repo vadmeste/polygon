@@ -17,7 +17,8 @@
   },
   "homepage": "https://github.com/minio-io/polygon",
   "dependencies": {
-    "material-ui": "^0.6.1",
+    "fuzzy": "^0.1.0",
+    "material-ui": "^0.7.0",
     "react": "^0.12.2",
     "react-tap-event-plugin": "^0.1.4"
   },
