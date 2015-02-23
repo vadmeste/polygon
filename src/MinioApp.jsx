@@ -3,6 +3,7 @@ var React = require('react');
 var MinioSearchBar = require('./MinioSearchBar.jsx');
 var MinioSearchResults = require('./MinioSearchResults.jsx');
 var MinioSearchHelp = require('./MinioSearchHelp.jsx');
+var MinioSearch = require('./MinioSearch.jsx');
 
 var MinioApp = React.createClass({
 	getInitialState: function() {
@@ -18,6 +19,7 @@ var MinioApp = React.createClass({
 				<MinioSearchBar ref="minioSearchBar" hintText="Search..."
 					onChange={this.doSearchHelp} onClick={this.doSearch} />
 				<MinioSearchHelp visible={this.state.helpVisible} input={this.state.searchInput} />
+				<MinioSearch onOptionSelected={this.doSearchHelp} />
 				<MinioSearchResults input={this.state.searchResultInput} />
 			</div>
 		);
