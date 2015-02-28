@@ -17,7 +17,7 @@ var MinioApp = React.createClass({
 		return (
 			<div>
 				<MinioSearchBar ref="minioSearchBar" hintText="Search..."
-					onChange={this.doSearchHelp} onClick={this.doSearch} />
+					onChange={this.doSearchHelp} onClick={this.doSearch} onKeyDown={this.doSearchShortcut} />
 				<MinioSearchHelp visible={this.state.helpVisible} input={this.state.searchInput} />
 				<MinioSearch onOptionSelected={this.doSearchHelp} />
 				<MinioSearchResults input={this.state.searchResultInput} />
@@ -42,6 +42,16 @@ var MinioApp = React.createClass({
 		};
 		this.refs.minioSearchBar.refs.searchInput.setValue('');
 		this.setState(newState);
+	},
+
+    doSearchShortcut: function(e) {
+		if (e.altKey && (e.keyCode < 16 || e.keyCode > 18)) {
+			console.log('Alt + ' + e.keyCode);
+			e.preventDefault();
+		}
+		if (e.keyCode == 9) {
+			console.log('TAB pressed');
+		}
 	}
 });
 

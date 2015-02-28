@@ -5,6 +5,7 @@ var MinioSearchBar = React.createClass({
 	propTypes: {
 		onChange: React.PropTypes.func,
 		onClick: React.PropTypes.func,
+		onKeyDown: React.PropTypes.func,
 		hintText: React.PropTypes.string,
 	},
 
@@ -12,7 +13,7 @@ var MinioSearchBar = React.createClass({
 		return (
 			<form className="minio-search-bar" onSubmit={this.props.onClick} >
 				<Mui.TextField ref="searchInput" hintText={this.props.hintText}
-					onChange={this.props.onChange} />
+					onChange={this.props.onChange} onKeyDown={this.props.onKeyDown} />
 				<Mui.RaisedButton label="Search" />
 			</form>
 		);
